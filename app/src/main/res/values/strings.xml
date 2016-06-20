@@ -27,7 +27,7 @@
     <string name="dial">9.打电话</string>
     <string name="audio_record">10.录音</string>
     <string name="media_record">11.视频录制</string>
-    <string name="scan_two_dimension_code">12.二维码扫描</string>
+    <string name="scan_two_dimension_code">12.二维码生成、扫描</string>
 
     <string name="app_picker_name">Applications</string>
     <string name="bookmark_picker_name">Bookmarks</string>

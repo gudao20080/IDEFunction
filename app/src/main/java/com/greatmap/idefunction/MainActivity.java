@@ -4,21 +4,15 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
-import android.inputmethodservice.InputMethodService;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.view.KeyEventCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.greatmap.idefunction.network.DataAccessUtil;
@@ -81,10 +75,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (resultCode == RESULT_OK) {
             if (requestCode == REQUEST_IMAGE_CAPTURE) {
                 Uri uri = Uri.parse(mCurrentPhotoPath); //获取拍照后图片的Uri
-                showPhoto("图片", uri);
+                showWebPhoto("图片", uri);
             } else if (requestCode == REQUEST_ALBUM_IMAGE) {
                 Uri uri = data.getData();
-                showPhoto("图片", uri);
+                showWebPhoto("图片", uri);
             }
         }
     }
@@ -130,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_showPhoto:
                 String photoUrl = "http://img4.imgtn.bdimg.com/it/u=2467748852,1434223916&fm=21&gp=0.jpg";
                 Uri uri = Uri.parse(photoUrl);
-                showPhoto("网络图片", uri);
+                showWebPhoto("网络图片", uri);
                 break;
             case R.id.btn_open_web:
                 openWeb("百度", "https://www.baidu.com/");
@@ -272,7 +266,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return imageFile;
     }
 
-    private void showPhoto(String title, Uri uri) {
+    private void showWebPhoto(String title, Uri uri) {
         Bundle bundle = new Bundle();
         bundle.putString(Constant.KEY_TITLE, title);
         bundle.putParcelable(Constant.KEY_URI, uri);
